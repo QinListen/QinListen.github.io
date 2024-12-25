@@ -4,11 +4,12 @@ import path from 'path'
 
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd())
-  
+
   return {
+    publicPath: process.env.NODE_ENV === 'production' ? '/QinListen/' : '/',
     plugins: [vue()],
     server: {
-      port: 8080,
+      port: 8081,
       host: true,
       strictPort: true,
       open: true,

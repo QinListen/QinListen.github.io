@@ -30,6 +30,8 @@ const createAxiosInstance = (baseURL) => {
   instance.interceptors.response.use(
     response => {
       const res = response.data
+      console.log(res);
+      
       if (res.code === 200) {
         return res.data
       }
@@ -37,7 +39,7 @@ const createAxiosInstance = (baseURL) => {
       return Promise.reject(new Error(res.message || '请求失败'))
     },
     error => {
-      console.error('响应错误：', error)
+      console.error('响应错误：', error.message)
       const { status } = error.response || {}
       handleErrorStatus(status, error.message)
       return Promise.reject(error)

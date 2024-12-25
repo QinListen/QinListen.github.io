@@ -2,7 +2,7 @@ import { mainHttp } from '../utils/request'
 
 // 首页相关接口
 export const getCounter = () => {
-  return mainHttp.get('/counter')
+  return mainHttp.get('/api/articles')
 }
 
 export const incrementCounter = () => {

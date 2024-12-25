@@ -1,9 +1,12 @@
 <template>
-  <v-app-bar app flat absolute color="transparent" elevation="0">
+  <v-app-bar app flat color="transparent" elevation="3">
     <template v-slot:prepend>
-      <v-app-bar-nav-icon v-if="xs"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon
+        v-if="xs"
+        @click.stop="drawer = !drawer"
+      ></v-app-bar-nav-icon>
     </template>
-    <v-app-bar-title>Listen</v-app-bar-title>
+    <v-app-bar-title @click.stop="drawer = !drawer">Listen</v-app-bar-title>
 
     <v-spacer></v-spacer>
 
@@ -19,11 +22,22 @@
       </v-btn>
     </template>
   </v-app-bar>
+
+  <v-navigation-drawer
+    v-model="drawer"
+    temporary
+    image="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg"
+    theme="dark"
+  >
+    <v-list :items="menuItems"></v-list>
+  </v-navigation-drawer>
 </template>
 
 <script setup>
 import { computed, ref } from "vue";
 import { useDisplay } from "vuetify";
+
+const drawer = ref(false);
 const menuItems = [
   { title: "首页", to: "/" },
   { title: "关于", to: "/about" },
