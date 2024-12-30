@@ -1,42 +1,17 @@
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import path from 'path'
 
-export default defineConfig(({ command, mode }) => {
-  const env = loadEnv(mode, process.cwd())
-
-  return {
-    // publicPath: process.env.NODE_ENV === 'production' ? '/qinlisten.github.io/' : '/',
-    base: '/QinListen.github.io/',
-    plugins: [vue()],
-    server: {
-      port: 8081,
-      host: true,
-      strictPort: true,
-      open: true,
-      proxy: {
-        // 从环境变量读取代理配置
-        [env.VITE_API_URL]: {
-          target: env.VITE_API_PROXY_TARGET,
-          changeOrigin: true,
-          rewrite: (path) => path.replace(new RegExp(`^${env.VITE_API_URL}`), '')
-        },
-        [env.VITE_QIN_API_URL]: {
-          target: env.VITE_QIN_PROXY_TARGET,
-          changeOrigin: true,
-          rewrite: (path) => path.replace(new RegExp(`^${env.VITE_QIN_API_URL}`), '')
-        },
-        [env.VITE_OTHER_API_URL]: {
-          target: env.VITE_OTHER_PROXY_TARGET,
-          changeOrigin: true,
-          rewrite: (path) => path.replace(new RegExp(`^${env.VITE_OTHER_API_URL}`), '')
-        }
-      }
+// https://vitejs.dev/config/
+export default defineConfig({
+  base: '/QinListen.github.io/', // 根路径
+  plugins: [vue()],
+  server: {
+    port: 3000, // 默认开发服务器端口
+    open: true, // 启动时自动打开浏览器
+  },
+  resolve: {
+    alias: {
+      '@': '/src', // 设置路径别名
     },
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, 'src')
-      }
-    }
-  }
+  },
 }) 

@@ -15,19 +15,19 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
-import { updateMessage as updateMessageApi } from '../api/about'
+// import { updateMessage as updateMessageApi } from '../api/about'
 
 const store = useStore()
 const newMessage = ref('')
 const welcomeMessage = computed(() => store.getters.welcomeMessage)
 
-const updateMessage = async () => {
-  try {
-    await updateMessageApi(newMessage.value)
-    store.dispatch('updateMessage', newMessage.value)
-    newMessage.value = ''
-  } catch (error) {
-    console.error('更新消息失败：', error)
-  }
-}
+// const updateMessage = async () => {
+//   try {
+//     await updateMessageApi(newMessage.value)
+//     store.dispatch('updateMessage', newMessage.value)
+//     newMessage.value = ''
+//   } catch (error) {
+//     console.error('更新消息失败：', error)
+//   }
+// }
 </script> 
