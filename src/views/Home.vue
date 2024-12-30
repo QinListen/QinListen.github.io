@@ -81,7 +81,7 @@ const list = ref([
   },
 ]);
 onMounted(() => {
-  updateMessage();
+  // updateMessage();
 });
 
 const updateMessage = async () => {
