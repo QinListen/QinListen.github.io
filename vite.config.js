@@ -6,7 +6,8 @@ export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd())
 
   return {
-    base: '/QinListen.github.io/',
+    // publicPath: process.env.NODE_ENV === 'production' ? '/qinlisten.github.io/' : '/',
+    base: './',
     plugins: [vue()],
     server: {
       port: 8081,
