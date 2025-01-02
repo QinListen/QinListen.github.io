@@ -9,6 +9,16 @@ const routes = [
     component: Home
   },
   {
+    path: '/case/big-animation',
+    name: 'BigAnimation',
+    component: () => import('../views/Case/BigAnimation.vue')
+  },
+  {
+    path: '/case/canvas-demo',
+    name: 'CanvasDemo',
+    component: () => import('../views/Case/CanvasDemo.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     component: About

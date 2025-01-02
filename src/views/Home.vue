@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Navbar />
     <v-img
       aspect-ratio="16/9"
       cover
@@ -9,7 +10,15 @@
 
     <div class="ma-4">
       <v-row>
-        <v-col v-for="(variant, i) in list" :key="i" cols="12" md="6" sm="12">
+        <v-col
+          v-for="(variant, i) in list"
+          :key="i"
+          cols="12"
+          sm="6"
+          md="6"
+          lg="3"
+          @click="handleClick(variant)"
+        >
           <v-card>
             <v-img
               class="align-end text-white"
@@ -17,15 +26,13 @@
               src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
               cover
             >
-              <v-card-title>Top 10 Australian beaches</v-card-title>
+              <v-card-title>{{ variant.name }}</v-card-title>
             </v-img>
 
-            <v-card-subtitle class="pt-4"> Number 10 </v-card-subtitle>
-
             <v-card-text>
-              <div>Whitehaven Beach</div>
+              <div>不知道什么标题</div>
 
-              <div>Whitsunday Island, Whitsunday Islands</div>
+              <div>不知道什么副标题</div>
             </v-card-text>
 
             <!-- <v-card-actions>
@@ -37,37 +44,42 @@
         </v-col>
       </v-row>
     </div>
+
   </div>
 </template>
 
 <script setup>
+import Navbar from "../components/Navbar.vue";
 import { computed, ref, onMounted } from "vue";
 import { useStore } from "vuex";
 import { incrementCounter } from "../api/index";
 import { useDisplay } from "vuetify";
 import { getCounter } from "../api/index";
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const store = useStore();
 const list = ref([
   {
     id: 1,
-    name: "Wallhaven",
+    name: "大屏滚动动画",
     url: "https://w.wallhaven.cc/full/yx/wallhaven-yxdzzl.jpg",
     description: "A beautiful picture by Wallhaven",
     views: 1000,
     favorites: 500,
     comments: 200,
-    router:'/shengdan'
+    router: "/case/big-animation",
   },
   {
     id: 2,
-    name: "Unsplash",
+    name: "canvas实现",
     url: "https://images.unsplash.com/photo-1560067167-5d75871771b9",
     description: "A beautiful picture by Unsplash",
     views: 2000,
     favorites: 700,
     comments: 1500,
-    router:'/shengdan'
+    router: "/case/canvas-demo",
   },
   {
     id: 3,
@@ -77,7 +89,7 @@ const list = ref([
     views: 3000,
     favorites: 900,
     comments: 300,
-    router:'/shengdan'
+    router: "/shengdan",
   },
 ]);
 onMounted(() => {
@@ -113,4 +125,8 @@ const updateMessage = async () => {
 //     console.error('异步增加计数失败：', error)
 //   }
 // }
+
+const handleClick = (item) => {
+  router.push(item.router)
+}
 </script> 
