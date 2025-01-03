@@ -1,1 +1,0 @@
-import{_ as o,o as a,c as s,a as n}from"./index-3abedada.js";const t={};function r(c,e,l,p,_,d){return a(),s("div",null,e[0]||(e[0]=[n("h1",null,"CanvasDemo",-1)]))}const m=o(t,[["render",r]]);export{m as default};

@@ -1,1 +1,0 @@
-import{_ as o,o as t,c as n,a as s}from"./index-3abedada.js";const a={};function r(c,e,i,l,p,_){return t(),n("div",null,e[0]||(e[0]=[s("h1",null,"大屏滚动动画",-1)]))}const f=o(a,[["render",r]]);export{f as default};
