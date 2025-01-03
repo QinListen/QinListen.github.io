@@ -14,4 +14,11 @@ export default defineConfig({
       '@': '/src', // 设置路径别名
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler' // or "modern", "legacy"
+      },
+    },
+  },
 }) 
